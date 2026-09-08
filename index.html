@@ -43,7 +43,8 @@ nav{display:flex;align-items:center;justify-content:space-between}.logo{font-siz
 .guide{background:#fff;border-radius:18px;padding:25px;line-height:2;box-shadow:0 5px 22px #17203310}
 code{background:#f0f2f7;padding:3px 7px;border-radius:6px}body.dark{background:#101522;color:#edf1f7}body.dark .hero{background:linear-gradient(180deg,#18213a,#101522)}body.dark .hero p,body.dark .card p{color:#aeb8cb}body.dark .search,body.dark .card,body.dark .filter,body.dark .empty,body.dark .guide{background:#171e2d;color:#edf1f7;border-color:#2b354a}body.dark .filter{border-color:#33405a}body.dark code{background:#242d3e}body.dark .cover{background:#202a40}.ad-inner{max-width:100%;min-height:90px;border:1px dashed #cbd3e3;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#8791a5;background:transparent;font-size:13px}.ad-slot{max-width:1200px;margin:20px auto;padding:0 20px}
 footer{margin-top:60px;background:#172033;color:#dfe5f2;text-align:center;padding:32px}
-@media(max-width:650px){.hero h1{font-size:30px}nav a{display:none}.logo{font-size:21px}.search button{padding:0 16px}}
+.gaza-logo-float{position:fixed;right:18px;bottom:18px;width:82px;height:82px;z-index:1500;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px #0004;background:#24282e;display:block}.gaza-logo-float img{width:100%;height:100%;display:block;object-fit:cover}.gaza-logo-float:hover{transform:scale(1.05)}
+@media(max-width:650px){.hero h1{font-size:30px}nav a{display:none}.logo{font-size:21px}.search button{padding:0 16px}.gaza-logo-float{width:64px;height:64px;right:10px;bottom:10px;border-radius:11px}}
 </style>
 </head>
 <body>
@@ -56,7 +57,6 @@ footer{margin-top:60px;background:#172033;color:#dfe5f2;text-align:center;paddin
 </section>
 
 <main class="container" id="library">
-<!-- مساحة إعلان 1: مخفية حاليًا، فعّلها لاحقًا بإزالة style="display:none" ووضع كود مزود الإعلانات داخلها -->
 <div id="ad-top" class="ad-slot" style="display:none" aria-hidden="true"><div class="ad-inner">مساحة إعلان</div></div>
 <div class="title"><h2>📚 المكتبة</h2><button class="upload-btn" onclick="openUploadGate()">➕ إضافة كتاب</button></div>
 <div class="filters">
@@ -67,11 +67,9 @@ footer{margin-top:60px;background:#172033;color:#dfe5f2;text-align:center;paddin
 <button class="filter" onclick="filterBooks('إنجليزي',this)">إنجليزي</button>
 </div>
 <div id="bookGrid" class="grid"></div>
-<!-- مساحة إعلان 2: مخفية حاليًا -->
 <div id="ad-between" class="ad-slot" style="display:none" aria-hidden="true"><div class="ad-inner">مساحة إعلان</div></div>
 </main>
 
-<!-- مساحة إعلان 3: مخفية حاليًا -->
 <div id="ad-footer" class="ad-slot" style="display:none" aria-hidden="true"><div class="ad-inner">مساحة إعلان</div></div>
 <section class="container" id="how">
 <div class="guide">
@@ -82,11 +80,11 @@ footer{margin-top:60px;background:#172033;color:#dfe5f2;text-align:center;paddin
 </section>
 
 <footer><b>من إنشاء Moaaz Amer</b><br>© 2026 مكتبة الطالب</footer>
+<a class="gaza-logo-float" href="https://m33324511-create.github.io/maktabat-altaleb/" aria-label="FREE GAZA FREE PALESTINE"><img src="./assets/gaza-logo.svg" alt="FREE GAZA FREE PALESTINE"></a>
 <div class="upload-modal" id="uploadModal"><div class="upload-box" id="uploadBox"><h3>🔐 إضافة كتاب</h3><div id="gate"><p>أدخل كلمة المرور للمتابعة.</p><input id="uploadPassword" type="password" placeholder="كلمة المرور" autocomplete="off"><div class="upload-actions"><button class="primary" onclick="verifyUploadPassword()">متابعة</button><button class="danger" onclick="closeUpload()">إلغاء</button></div><p class="hint">يتم التحقق من كلمة المرور على خادم Supabase، ولا توجد كلمة المرور داخل كود الموقع.</p></div><div id="uploadForm" style="display:none"><label>ملف PDF</label><input id="bookFile" type="file" accept="application/pdf"><label>اسم الكتاب</label><input id="bookTitle" placeholder="اسم الكتاب"><label>التصنيف</label><select id="bookSubject"><option>رياضيات</option><option>عربي</option><option>تاريخ</option><option>إنجليزي</option><option>علوم</option><option>أخرى</option></select><label>وصف مختصر</label><input id="bookDescription" placeholder="وصف الكتاب"><div class="upload-actions"><button class="primary" onclick="uploadBook()">☁️ رفع الكتاب</button><button class="danger" onclick="closeUpload()">إلغاء</button></div><p class="hint">الكتاب بعد رفعه يُحفظ في التخزين السحابي ويظهر لجميع زوار الموقع.</p><p id="uploadStatus" class="hint"></p></div></div></div>
 
 <script>
 const books = [];
-
 function render(list=books){
  const grid=document.getElementById('bookGrid');
  if(!list.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1"><div class="big">📂</div><h3>المكتبة فارغة حاليًا</h3><p>أضف كتبك ومذكراتك لاحقًا، وستظهر هنا تلقائيًا.</p></div>';return;}
@@ -113,12 +111,10 @@ function toggleTheme(){const dark=document.body.classList.toggle("dark");localSt
 if(localStorage.getItem("maktaba-theme")==="dark"){document.body.classList.add("dark");document.getElementById("themeBtn").textContent="☀️ الوضع النهاري"}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closePDF()});
 </script>
-
 <script>
 const SUPABASE_URL = 'https://cliakkaotglliowwxtsz.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_B4nJqjyAGS6hctdZLB8zIQ_tJ5xG2Qk';
 const UPLOAD_FUNCTION = SUPABASE_URL + '/functions/v1/upload-book';
-
 async function loadCloudBooks(){
  try{
   const r=await fetch(SUPABASE_URL+'/rest/v1/books?select=id,title,subject,description,file_url,created_at&order=created_at.desc',{headers:{apikey:SUPABASE_PUBLISHABLE_KEY,Authorization:'Bearer '+SUPABASE_PUBLISHABLE_KEY}});
@@ -134,13 +130,11 @@ async function verifyUploadPassword(){
  const password=document.getElementById('uploadPassword').value;
  if(!password){alert('اكتب كلمة المرور.');return;}
  const status=document.getElementById('uploadStatus'); status.textContent='جارٍ التحقق...';
- // لا نرفع الملف في هذه الخطوة؛ نستخدم طلبًا صغيرًا للتحقق من كلمة المرور.
  const fd=new FormData(); fd.append('password',password); fd.append('action','verify');
  try{
   const r=await fetch(UPLOAD_FUNCTION,{method:'POST',body:fd});
   const data=await r.json().catch(()=>({}));
   if(r.status===401){status.textContent='';alert('كلمة المرور غير صحيحة.');return;}
-  // لو كلمة المرور صحيحة لكن الملف التجريبي فشل في قاعدة البيانات، نعتبرها غير صالحة للمتابعة.
   if(!r.ok) throw new Error(data.error||'تعذر التحقق');
   document.getElementById('gate').style.display='none';document.getElementById('uploadForm').style.display='block';status.textContent='تم التحقق. اختر الكتاب الآن.';
  }catch(e){status.textContent='';alert('تعذر الاتصال بخدمة الرفع. تأكد من إعداد Supabase.');}
