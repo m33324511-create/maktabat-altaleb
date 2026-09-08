@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://m33324511-create.github.io/maktabat-altaleb/sitemap.xml
