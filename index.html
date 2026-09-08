@@ -65,6 +65,10 @@ footer{margin-top:60px;background:#172033;color:#dfe5f2;text-align:center;paddin
 <button class="filter" onclick="filterBooks('عربي',this)">عربي</button>
 <button class="filter" onclick="filterBooks('تاريخ',this)">تاريخ</button>
 <button class="filter" onclick="filterBooks('إنجليزي',this)">إنجليزي</button>
+<button class="filter" onclick="filterBooks('فيزياء',this)">فيزياء</button>
+<button class="filter" onclick="filterBooks('كيمياء',this)">كيمياء</button>
+<button class="filter" onclick="filterBooks('برمجة',this)">برمجة</button>
+<button class="filter" onclick="filterBooks('فرنسية',this)">فرنسية</button>
 </div>
 <div id="bookGrid" class="grid"></div>
 <div id="ad-between" class="ad-slot" style="display:none" aria-hidden="true"><div class="ad-inner">مساحة إعلان</div></div>
@@ -81,7 +85,7 @@ footer{margin-top:60px;background:#172033;color:#dfe5f2;text-align:center;paddin
 
 <footer><b>من إنشاء Moaaz Amer</b><br>© 2026 مكتبة الطالب</footer>
 <a class="gaza-logo-float" href="https://m33324511-create.github.io/maktabat-altaleb/" aria-label="FREE GAZA FREE PALESTINE"><img src="./assets/gaza-logo.svg" alt="FREE GAZA FREE PALESTINE"></a>
-<div class="upload-modal" id="uploadModal"><div class="upload-box" id="uploadBox"><h3>🔐 إضافة كتاب</h3><div id="gate"><p>أدخل كلمة المرور للمتابعة.</p><input id="uploadPassword" type="password" placeholder="كلمة المرور" autocomplete="off"><div class="upload-actions"><button class="primary" onclick="verifyUploadPassword()">متابعة</button><button class="danger" onclick="closeUpload()">إلغاء</button></div><p class="hint">يتم التحقق من كلمة المرور على خادم Supabase، ولا توجد كلمة المرور داخل كود الموقع.</p></div><div id="uploadForm" style="display:none"><label>ملف PDF</label><input id="bookFile" type="file" accept="application/pdf"><label>اسم الكتاب</label><input id="bookTitle" placeholder="اسم الكتاب"><label>التصنيف</label><select id="bookSubject"><option>رياضيات</option><option>عربي</option><option>تاريخ</option><option>إنجليزي</option><option>علوم</option><option>أخرى</option></select><label>وصف مختصر</label><input id="bookDescription" placeholder="وصف الكتاب"><div class="upload-actions"><button class="primary" onclick="uploadBook()">☁️ رفع الكتاب</button><button class="danger" onclick="closeUpload()">إلغاء</button></div><p class="hint">الكتاب بعد رفعه يُحفظ في التخزين السحابي ويظهر لجميع زوار الموقع.</p><p id="uploadStatus" class="hint"></p></div></div></div>
+<div class="upload-modal" id="uploadModal"><div class="upload-box" id="uploadBox"><h3>🔐 إضافة كتاب</h3><div id="gate"><p>أدخل كلمة المرور للمتابعة.</p><input id="uploadPassword" type="password" placeholder="كلمة المرور" autocomplete="off"><div class="upload-actions"><button class="primary" onclick="verifyUploadPassword()">متابعة</button><button class="danger" onclick="closeUpload()">إلغاء</button></div><p class="hint">يتم التحقق من كلمة المرور على خادم Supabase، ولا توجد كلمة المرور داخل كود الموقع.</p></div><div id="uploadForm" style="display:none"><label>ملف PDF</label><input id="bookFile" type="file" accept="application/pdf"><label>اسم الكتاب</label><input id="bookTitle" placeholder="اسم الكتاب"><label>التصنيف</label><select id="bookSubject"><option>رياضيات</option><option>عربي</option><option>تاريخ</option><option>إنجليزي</option><option>فيزياء</option><option>كيمياء</option><option>برمجة</option><option>فرنسية</option><option>علوم</option><option>أخرى</option></select><label>وصف مختصر</label><input id="bookDescription" placeholder="وصف الكتاب"><div class="upload-actions"><button class="primary" onclick="uploadBook()">☁️ رفع الكتاب</button><button class="danger" onclick="closeUpload()">إلغاء</button></div><p class="hint">الكتاب بعد رفعه يُحفظ في التخزين السحابي ويظهر لجميع زوار الموقع.</p><p id="uploadStatus" class="hint"></p></div></div></div>
 
 <script>
 const books = [];
@@ -97,7 +101,7 @@ function render(list=books){
  </article>`).join('');
  grid.querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>{const b=list[Number(btn.dataset.open)];openPDF(b.file,b.title)}));
 }
-function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function escapeHtml(v){return String(v??'').replace(/[&<>\'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
 function filterBooks(subject,btn){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');render(subject==='all'?books:books.filter(b=>b.subject===subject));}
 function doSearch(){const q=document.getElementById('search').value.trim().toLowerCase();render(books.filter(b=>(b.title+' '+b.subject+' '+(b.description||'')).toLowerCase().includes(q)));}
 document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});
