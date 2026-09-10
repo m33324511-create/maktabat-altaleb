@@ -1,1 +1,0 @@
-The favicon is provided as assets/favicon.svg
