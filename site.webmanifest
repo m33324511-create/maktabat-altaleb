@@ -1,0 +1,20 @@
+{
+  "name": "مكتبة الطالب",
+  "short_name": "مكتبة الطالب",
+  "description": "مكتبة إلكترونية للكتب والمراجع والمذكرات والملفات التعليمية للطلاب.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#3157d5",
+  "background_color": "#f5f7fb",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
