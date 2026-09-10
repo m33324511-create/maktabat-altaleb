@@ -1,0 +1,21 @@
+النسخة النهائية - مكتبة الطالب الدحيح
+
+1) ارفع محتويات هذا المشروع إلى GitHub/Cloudflare Pages كما كنت تفعل سابقًا.
+2) مهم: ملف supabase/functions/upload-book/index.ts يجب نشره أيضًا كـ Supabase Edge Function، لأن Cloudflare Pages لا ينشر ملفات Edge Function تلقائيًا.
+3) شغّل supabase.sql مرة واحدة في Supabase SQL Editor.
+4) بعد ذلك انشر الدالة upload-book من مجلد supabase/functions/upload-book.
+5) تأكد أن Secrets في Supabase موجودة:
+   SUPABASE_URL
+   SUPABASE_SERVICE_ROLE_KEY
+   UPLOAD_PASSWORD
+
+ما تم إصلاحه في هذه النسخة:
+- رابط Supabase الصحيح: https://cliakkaotglliowwxtsz.supabase.co
+- تحميل الكتب من Supabase بعد Refresh مع منع الكاش.
+- الكتب المضافة بالرابط الخارجي تبقى وتظهر بعد Refresh.
+- إعادة نظام حذف الكتب بكلمة المرور.
+- حذف ملف PDF والغلاف من التخزين عند حذف الكتاب.
+- إضافة cover_path لتتبع الغلاف وحذفه.
+- الحفاظ على اسم مكتبة الطالب الدحيح وSEO الأساسي.
+
+مهم جدًا: الكتب الموجودة حاليًا في قاعدة البيانات لن تحتاج إلى إعادة رفعها.

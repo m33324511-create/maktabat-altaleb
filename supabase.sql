@@ -1,0 +1,5 @@
+create extension if not exists pgcrypto;
+create table if not exists public.books(id uuid primary key default gen_random_uuid(),title text not null,subject text not null default 'أخرى',description text not null default '',file_path text null unique,file_url text null,external_url text null,cover_url text null,cover_path text null,created_at timestamptz not null default now());
+alter table public.books add column if not exists external_url text; alter table public.books add column if not exists cover_url text; alter table public.books add column if not exists cover_path text; alter table public.books alter column file_path drop not null; alter table public.books alter column file_url drop not null;
+alter table public.books enable row level security; drop policy if exists "Public can read books" on public.books; create policy "Public can read books" on public.books for select to anon,authenticated using(true);
+insert into storage.buckets(id,name,public) values('books','books',true) on conflict(id) do update set public=true; insert into storage.buckets(id,name,public) values('covers','covers',true) on conflict(id) do update set public=true;
