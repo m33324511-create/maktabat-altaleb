@@ -1,6 +1,6 @@
 {
-  "name": "مكتبة الطالب",
-  "short_name": "مكتبة الطالب",
+  "name": "مكتبة الطالب الدحيح",
+  "short_name": "الطالب الدحيح",
   "description": "مكتبة إلكترونية للكتب والمراجع والمذكرات والملفات التعليمية للطلاب.",
   "lang": "ar",
   "dir": "rtl",
@@ -11,9 +11,9 @@
   "background_color": "#f5f7fb",
   "icons": [
     {
-      "src": "/assets/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/assets/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
