@@ -1,0 +1,30 @@
+name: Refresh Cloudflare deployment
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refresh-cloudflare.yml'
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Touch homepage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '<!-- Cloudflare refresh 2026-09-11 -->'
+          if marker not in s:
+              s = s.replace('</head>', marker + '</head>', 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Refresh homepage deployment'
+          git push
