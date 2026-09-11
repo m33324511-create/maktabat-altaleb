@@ -1,3 +1,7 @@
 /assets/favicon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/favicon.svg
   Content-Type: image/svg+xml
   Cache-Control: public, max-age=31536000, immutable
