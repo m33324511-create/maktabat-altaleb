@@ -1,0 +1,76 @@
+/* تحسين التجاوب مع الموبايل والتابلت والكمبيوتر */
+html{overflow-x:hidden}
+body{overflow-x:hidden}
+img,iframe{max-width:100%}
+button,input,select{font:inherit}
+
+@media (max-width:900px){
+  header{padding:18px 4%}
+  nav{gap:12px}
+  nav>div:last-child{display:flex;align-items:center;justify-content:flex-end;gap:4px;flex-wrap:wrap}
+  nav a{margin:0 5px}
+  .hero{padding:42px 4%}
+  .container{width:100%;padding:0 16px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .card{padding:15px}
+  .cover{height:160px}
+}
+
+@media (max-width:650px){
+  header{padding:14px 14px}
+  nav{align-items:flex-start}
+  .logo{font-size:18px;line-height:1.5;white-space:nowrap}
+  nav>div:last-child{gap:5px}
+  nav a{display:none}
+  .theme{padding:8px 10px}
+
+  .hero{padding:34px 14px 38px}
+  .hero h1{font-size:28px;line-height:1.35;margin:8px 0}
+  .hero p{font-size:15px;line-height:1.7;margin:8px 0 18px}
+  .search{width:100%;margin:18px auto 0;padding:5px;border-radius:13px}
+  .search input{min-width:0;width:100%;padding:12px 10px;font-size:14px}
+  .search button{padding:11px 14px;white-space:nowrap}
+
+  .container{margin:24px auto;padding:0 12px}
+  .title{align-items:stretch;flex-direction:column;gap:10px}
+  .title h2{margin:0}
+  .upload-btn{width:100%;padding:12px}
+  .filters{gap:7px;margin:15px 0}
+  .filter{padding:8px 11px;font-size:13px}
+  .grid{grid-template-columns:1fr;gap:13px}
+  .card{padding:14px;border-radius:15px}
+  .cover{height:185px}
+  .card h3{font-size:17px;line-height:1.5}
+  .card p{font-size:14px;min-height:0}
+  .actions{gap:7px}
+  .actions>*{min-height:44px}
+
+  .guide{padding:16px}
+  .guide h2{font-size:18px}
+  .guide p{font-size:14px;line-height:1.8}
+
+  .upload-modal,.pdf-modal{padding:10px}
+  .upload-box{width:100%;max-height:calc(100vh - 20px);overflow:auto;padding:17px;border-radius:16px}
+  .upload-actions{flex-direction:column}
+  .upload-actions>*{width:100%;min-height:44px}
+  .upload-box input,.upload-box select{font-size:14px}
+  .pdf-top{padding:5px 2px;gap:8px}
+  .pdf-top strong{font-size:14px;max-width:65%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pdf-top button{padding:9px 11px}
+  .pdf-frame{height:calc(100vh - 65px);border-radius:8px}
+
+  footer{margin-top:38px;padding:25px 14px}
+  .gaza-footer-logo{width:190px}
+  .contact-whatsapp{width:100%;max-width:330px}
+}
+
+@media (max-width:380px){
+  .logo{font-size:16px}
+  .hero h1{font-size:25px}
+  .filter{padding:7px 9px;font-size:12px}
+  .cover{height:165px}
+}
+
+@media (min-width:1200px){
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
