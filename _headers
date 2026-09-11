@@ -5,3 +5,6 @@
 /assets/favicon.svg
   Content-Type: image/svg+xml
   Cache-Control: public, max-age=31536000, immutable
+
+/
+  Link: </responsive.css>; rel="stylesheet"
